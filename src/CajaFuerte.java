@@ -7,6 +7,7 @@ public class CajaFuerte
     private byte intentosFallidos;
     private double capacidadMaxima;
     private double saldoActual;
+    private boolean alarmaActivada;
 
     public CajaFuerte(String numeroSerie, String modelo,
                       int claveAcceso, double capacidadMaxima)
@@ -18,7 +19,7 @@ public class CajaFuerte
         estado = false;
         intentosFallidos = 0;
         saldoActual = 0.0;
-        System.out.println("Caja fuerte creada correctamente");
+        alarmaActivada = false;
     }
 
     public void abrir(int claveIngresada)
@@ -50,6 +51,7 @@ public class CajaFuerte
             if (intentosFallidos >= 3)
             {
                 estado = false;
+                alarmaActivada = true;
                 System.out.println("Caja fuerte bloqueada");
             }
         }
@@ -120,6 +122,7 @@ public class CajaFuerte
         }
 
         System.out.println("Intentos fallidos: " + intentosFallidos);
+        System.out.println("Alarma activada: " + alarmaActivada);
 
         if (estado)
         {
